@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <input type='file' id='file-input' onchange="uploadFile(event)">
+  <figure>
+    <figcaption>音声ファイル再生</figcaption>
+    <audio src="./Over_Night.mp3" controls autoplay>
+    </audio>
+    <a href=""> Download audio </a>
+  </figure>
+  
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://github.com/goldfire/howler.js">
+        var sound = new Howl({
+        src: ['./Over_Night.mp3'],
+        volume: 1.0,
+        autoplay: true,
+        onend : () => {
+            console.log('Finished!')
+        }
+    });
+  </script>
+  <script>
+    async function uploadFile(event) {
+    
+    console.log('event : ')
+    console.log(event)
+    //ファイルを取得する
+    const audio_file = event.target.files[0];
+
+    console.log('type : ')
+    console.log(audio_file.type)
+
+    //APIエンドポイントにGETリクエストを送る
+    // const res_signed_url = await axios.get('https://~~~~~~~.execute-api.ap-northeast-1.amazonaws.com/~~~~~~~~');
+
+    //レスポンスから署名付きURLを取り出す
+    // const signed_url = JSON.parse(res_signed_url.data.body).put_url;
+
+    //署名付きURLにファイルをPUTする
+    // await axios.put(
+    //         signed_url,
+    //         audio_file,
+    //         {
+    //           headers: {
+    //             'Content-Type': audio_file.type
+    //           }
+    //         }
+    //       );
+    // };
+
+    // const input = document.getElementById('file-input');
+
+    // input.addEventListener('change', (event) => uploadFile(event));
+    }
+  </script>
+</body>
+</html>
